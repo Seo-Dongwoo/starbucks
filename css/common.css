@@ -1,0 +1,373 @@
+/* COMMON */
+body {
+  color: #333;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.4;
+  /* 줄 간격  */
+  font-family: 'Nanum Gothic', sans-serif;
+}
+
+a {
+  text-decoration: none;
+  /* 모든 a요소는 밑줄을 없애준다. 디자인을 위한 작업! */
+}
+.inner {
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
+}
+
+img {
+  display: block;
+  /* 이미지를 글자 취급하지 않고 블록 취급함으로써 밑에 빈 공간이 사라짐. */
+}
+.btn{
+  width: 130px; 
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 4px;
+  color: #333;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: block;
+  transition: .4s;
+}
+.btn:hover{
+  background-color: #333;
+  color: #fff;
+}
+.btn.btn--reverse{
+  background-color: #333;
+  color: #fff;
+}
+.btn.btn--reverse:hover{
+  background-color: transparent;
+  color: #333;
+}
+.btn.btn--brown {
+  color: #592B18;
+  border-color: #592B18;
+}
+.btn.btn--brown:hover {
+  color: #fff;
+  background-color: #592B18;
+}
+.btn.btn--gold {
+  color: #d9aa8a;
+  border-color: #d9aa8a;
+}
+.btn.btn--gold:hover {
+  color:#FFF;
+  background-color: #d9aa8a;
+}
+.btn.btn--white {
+  color: #fff;
+  border-color: #fff;
+}
+.btn.btn--gold:hOVER {
+  color:#333;
+  background-color: #fff;
+}
+/* -- 는 상태를 나타낼 때 쓴다.  */
+.back-to-position {
+  opacity: 0;
+  transition: 1s;
+}
+.back-to-position.to-right {
+  transform: translateX(-150px);
+}
+.back-to-position.to-left {
+  transform: translateX(150px);
+}
+.show .back-to-position {
+  opacity: 1;
+  transform: translateX(0)
+}
+.show .back-to-position.delay-0 {
+  transition-delay: 0s;
+}
+.show .back-to-position.delay-1 {
+  transition-delay: .3s;
+}
+.show .back-to-position.delay-2 {
+  transition-delay: .6s;
+}
+.show .back-to-position.delay-3 {
+  transition-delay: .9s;
+}
+
+/* HEADER */
+header {
+  width: 100%;
+  background-color: #f6f5f0;
+  border-bottom: 1px solid #c8c8c8;
+  position: fixed;
+  /* 뷰포트에 맞추고 가로 너비를 최소한으로 줄어들라고 한다.  */
+  top: 0;
+  z-index: 9;
+}
+header > .inner {
+  height: 120px;
+}
+/* 헤더의 자식요소인 inner만 height가 120px 이라는 의미 */
+header .logo {
+  height: 75px;
+  position: absolute;
+  /* 위치를 부모요소 기준으로 하겠다는 의미 */
+  top: 0;
+  bottom: 0;
+  /* 로고를 가운데 정렬을 하기위해 위 아래를 0으로 설정해준다. */
+  margin: auto 0;
+}
+
+header .sub-menu {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  display: flex;
+}
+
+header .sub-menu ul.menu {
+  font-family: Arial, sans-serif;
+  display: flex;
+}
+
+header .sub-menu ul.menu li {
+  position: relative;
+}
+
+header .sub-menu ul.menu li::before {
+  content: "";
+  /* display: block;는 position: absloute; 가 있으므로 지워도 된다. */
+  width: 1px;
+  height: 12px;
+  background-color: #e5e5e5;
+  /* before를 씀으로써 li 앞에 칸막이등을 추가할 수 있다. */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+}
+
+header .sub-menu ul.menu li:first-child:before {
+  display: none;
+}
+/* li태그의 가장 앞쪽의 칸막이를 없애주는 작업! */
+
+header .sub-menu ul.menu li a {
+  font-size: 12px;
+  padding: 11px 16px;
+  display: block;
+  color: #656565;
+}
+
+header .sub-menu ul.menu li a:hover {
+  color: #000;
+  /* 마우스를 올리게 되면 검정색으로 바뀐다. */
+}
+
+
+header .sub-menu .search {
+  height: 34px;
+  position: relative;
+}
+
+header .sub-menu .search input {
+  width: 36px;
+  height: 34px;
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  border-radius: 5px;
+  outline: none;
+  /* input 부분에 파란 테두리를 사용하지 않겠다는 작업 */
+  background-color: #fff;
+  color: #777;
+  font-size: 12px;
+  transition: width .4s;
+  /* input 부분을 0.4초동안 늘어나도록 설정해준다. */
+}
+
+header .sub-menu .search input:focus {
+  width: 190px;
+  border-color: #669900;
+}
+
+/* input 부분을 누르게 되면 input 부분이 길게 늘어나게 하는 작업 */
+
+header .sub-menu .search .material-icons {
+  height: 24px;
+  /* 밑에 작업은 수직 가운데 배치를 하기위한 작업이므로 필수로 높이의 값이 있어야한다. */
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  right: 5px;
+  transition: .4s;
+}
+
+header .sub-menu .search.focused .material-icons {
+  opacity: 0;
+}
+/* search가 포커스 되었을 때 돋보기 모양이 사라지게하는 작업  */
+
+header .main-menu {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  display: flex;
+}
+header .main-menu .item .item__name {
+  padding: 10px 20px 34px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+}
+header .main-menu .item:hover .item__name{
+  background-color: #2c2a29;
+  color: #669900;
+  border-radius: 6px 6px 0 0;
+}
+/* name에 hover효과를 적용하게 되면 contents 부분에도 영향이 가기 때문에
+item 자체에 부여를 해야한다. */
+header .main-menu .item .item__contents {
+  width: 100%;
+  position: fixed;
+  /* 뷰포트를 기준으로 고정하겠다라는 의미 */
+  left: 0;
+  display: none;
+}
+header .main-menu .item:hover .item__contents {
+  display: block;
+}
+header .main-menu .item .item__contents .contents__menu {
+  background-color: #2c2a29;
+}
+header .main-menu .item .item__contents .contents__menu > ul {
+  display: flex;
+  padding: 20px 0;
+}
+/* 바로 자식요소를 명확하게 표시하기 위해 >인 자식선택자를 꼭 사용 */
+header .main-menu .item .item__contents .contents__menu > ul > li {
+  width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu > ul > li h4 {
+  padding: 3px 0 12px 0;
+  font-size: 14px;
+  color:#fff;
+
+}
+header .main-menu .item .item__contents .contents__menu > ul > li ul li{
+  padding: 5px;
+  font-size: 12px;
+  color: #999;
+  cursor: pointer;
+  /* 마우스를 갖다대면 손가락 모양의 포인터가 생긴다. */
+}
+header .main-menu .item .item__contents .contents__texture {
+  padding: 26px 0;
+  font-size: 12px;
+  background-image: url("../iamges/main_menu_pattern.jpg");
+  /* ../으로 css파일에서 나가고 images로 들어가야 한다. */
+}
+header .main-menu .item .item__contents .contents__texture h4 {
+  color: #999;
+  font-weight: 700;
+}
+header .main-menu .item .item__contents .contents__texture p{
+  color: #669900;
+  margin: 4px 0 14px;
+}
+header .badges {
+  position: absolute;
+  top: 132px;
+  right: 12px;
+}
+header .badges .badge {
+  border-radius: 10px;
+  overflow: hidden;
+  /* 둥근 모서리 밖으로 이미지가 넘치지 않게 하기 위함 */
+  margin-bottom: 12px;
+  box-shadow: 4px 4px 10px rgb(0,0,0,.15);
+  cursor: pointer;
+}
+
+/* FOOTER */
+footer {
+  background-color: #272727;
+  border-top: 1px solid #333;
+}
+footer .inner {
+  padding: 40px 0 60px 0;
+}
+footer .menu {
+  display: flex;
+  justify-content: center;
+}
+footer .menu li {
+  position: relative;
+}
+footer .menu li::before {
+  content: "";
+  width: 3px;
+  height: 3px;
+  background-color: #555;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: -1px;
+  margin: auto;
+}
+footer .menu li:last-child::before {
+  display: none;
+}
+footer .menu li a {
+  color: #ccc;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 15px;
+  display: block;
+}
+footer .menu li a.green {
+  color: #669900;
+}
+footer .btn-group {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+footer .btn-group .btn {
+  font-size: 12px;
+  margin-right: 10px;
+}
+footer .btn-group .btn:last-child {
+  margin-right: 0;
+}
+footer .info {
+  margin-top: 30px;
+  text-align: center;
+}
+footer .info span {
+  margin-right: 20px;
+  color: #999;
+  font-size: 12px;
+}
+footer .info span:last-child {
+  margin-right: 0;
+}
+footer .copyright {
+  color: #999;
+  font-size: 12px;
+  text-align: center;
+  margin-top: 12px;
+}
+footer .logo {
+  margin: 30px auto 0;
+}
+/* 이미지 태그로 만들어져 있기 때문에 가로 넓이를 따로 지정하지 않아도 auto처리하게 되면
+가운데 정렬이 된다. */
+
